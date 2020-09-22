@@ -57,6 +57,44 @@ describe('workspace-project App', () => {
     typeAndSubmitUsersNames('Bob', 'Alice');
   });
 
+  it('should be able to chat', () => {
+    page.navigateTo();
+
+    const message1 = 'Hello Alice !';
+    const message2 = 'Hello Bob !'
+
+    typeAndSubmitUsersNames('Bob', 'Alice');
+    typeAndSubmitMessageFromUser(message1, 1);
+    typeAndSubmitMessageFromUser(message2, 2);
+
+    const chatHistoryOfUser1 = page.getChatHistoryOfUser(1).getText();
+    expect(chatHistoryOfUser1).toContain(message1);
+    expect(chatHistoryOfUser1).toContain(message2);
+
+    const chatHistoryOfUser2 = page.getChatHistoryOfUser(1).getText();
+    expect(chatHistoryOfUser2).toContain(message1);
+    expect(chatHistoryOfUser2).toContain(message2);
+  });
+
+  it('same user should be able to send multiple messages in a row', () => {
+    page.navigateTo();
+
+    const messages = [
+      'Hello Alice !',
+      'How are you ?',
+      'Everything fine ?'
+    ];
+
+    typeAndSubmitUsersNames('Bob', 'Alice');
+    messages.forEach(message => typeAndSubmitMessageFromUser(message, 1))
+
+    const chatHistoryOfUser1 = page.getChatHistoryOfUser(1).getText();
+    messages.forEach(message => expect(chatHistoryOfUser1).toContain(message))
+
+    const chatHistoryOfUser2 = page.getChatHistoryOfUser(2).getText();
+    messages.forEach(message => expect(chatHistoryOfUser2).toContain(message))
+  });
+
   const typeUsersNames = (user1: string, user2: string) => {
     const user1NameInput = page.getNameInputOfUser(1);
     user1NameInput.sendKeys(user1);
@@ -83,5 +121,10 @@ describe('workspace-project App', () => {
   const submitMessageFromUser = (user: number) => {
     const chat1SendButton = page.getChatSendButtonOfUser(user);
     chat1SendButton.click();
+  }
+
+  const typeAndSubmitMessageFromUser = (message: string, user: number) => {
+    typeMessageFromUser(message, user);
+    submitMessageFromUser(user);
   }
 });

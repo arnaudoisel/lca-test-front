@@ -1,0 +1,17 @@
+<div class="sender">
+  {{sender | titlecase}}
+</div>
+<div class="recipient">
+  To: {{recipient | titlecase}}
+</div>
+<ngx-simplebar class="messagesWrapper" #scrollMe>
+  <div class="messages">
+    <app-message *ngFor="let message of chatHistory" [message]="message" [ngClass]="{'senderMessage': message.sender === sender}"></app-message>
+  </div>
+</ngx-simplebar>
+<div class="action">
+  <textarea class="text" placeholder="Type a message" [(ngModel)]="inputText" (keydown)="onKeyDown($event)" (paste)="onPaste($event)"></textarea>
+  <button class="send" (click)="doSendMessage()" (keydown)="onKeyDown($event)">
+    <img src="assets/svg/send-black-24dp.svg"/>
+  </button>
+</div>

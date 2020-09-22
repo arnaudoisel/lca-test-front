@@ -1,6 +1,7 @@
 import { browser, by, element, ElementFinder } from 'protractor';
 
 export class AppPage {
+
   navigateTo(): Promise<unknown> {
     return browser.get(browser.baseUrl) as Promise<unknown>;
   }
@@ -19,5 +20,17 @@ export class AppPage {
 
   getSameUserNameError(): ElementFinder {
     return element(by.css('#user2 ~ .error:nth-of-type(2)'));
+  }
+
+  getChatInputOfUser(n: number): ElementFinder {
+    return element(by.css(`#chat${n} .action .text`));
+  }
+
+  getChatSendButtonOfUser(n: number): ElementFinder {
+    return element(by.css(`#chat${n} .action .send`));
+  }
+
+  getChatHistoryOfUser(n: number): ElementFinder {
+    return element(by.css(`#chat${n} .messages`));
   }
 }

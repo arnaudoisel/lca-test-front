@@ -1,1 +1,7 @@
-<app-users-form (enterChat)="enterChat($event)"></app-users-form>
+<ng-container *ngIf="!users; else chat">
+  <app-users-form (enterChat)="enterChat($event)"></app-users-form>
+</ng-container>
+<ng-template #chat>
+  <app-chat id="chat1" [chatHistory]="chatHistory" [sender]="users.user1" [recipient]="users.user2" (sendMessage)="sendMessage($event)"></app-chat>
+  <app-chat id="chat2" [chatHistory]="chatHistory" [sender]="users.user2" [recipient]="users.user1" (sendMessage)="sendMessage($event)"></app-chat>
+</ng-template>
