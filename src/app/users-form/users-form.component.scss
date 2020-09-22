@@ -1,0 +1,25 @@
+@import '~src/assets/scss/variables.scss';
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid $red-light;
+}
+
+.error {
+	color: $red;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 10px;
+}
+
+button {
+  margin-top: 21.5px;
+}

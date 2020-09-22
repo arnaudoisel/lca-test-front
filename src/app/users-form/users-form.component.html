@@ -1,0 +1,33 @@
+<h2>Please enter name of users</h2>
+
+<form (ngSubmit)="onSubmit()" #usersForm="ngForm" [appMustBeDifferent]="['user1', 'user2']">
+  <div class="form-group">
+    <label for="user1">First user</label>
+    <input type="text" class="form-control" id="user1"
+           required
+           [(ngModel)]="model.user1" name="user1"
+           #user1="ngModel"
+           appNotBlank>
+    <div [hidden]="user1.valid || user1.pristine"
+         class="error">
+      First user name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="user2">Second user</label>
+    <input type="text" class="form-control" id="user2"
+           required
+           [(ngModel)]="model.user2" name="user2"
+           #user2="ngModel"
+           appNotBlank>
+    <div [hidden]="user2.valid || user2.pristine || user2.errors?.sameName"
+         class="error">
+      Second user name is required
+    </div>
+    <div [hidden]="!user2.errors?.sameName || user2.pristine"
+          class="error">
+      Users names must be different
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success" [disabled]="usersForm.form.pristine || !usersForm.form.valid">Enter chat</button>
+</form>
