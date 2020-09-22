@@ -1,27 +1,67 @@
 # Chat
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [How to use](#how-to-use)
+* [Usage](#usage)
+* [Build](#build)
+* [Running unit tests](#running-unit-tests)
+* [Running end-to-end tests](#running-end-to-end-test)
+* [Production](#production)
 
-## Development server
+## General info
+Front-end test. Two people chatting together.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Technologies
+Project is created with:
+* Angular 10
 
-## Code scaffolding
+## How To Use
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/arnaudoisel/lca-test-front
+
+# Go into the repository
+$ cd lca-test-front
+
+# Install dependencies
+$ npm install
+
+# Run the app
+$ npm start
+```
+Navigate to `http://localhost:4200/`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+# Build the app
+$ npm build
+```
+The build artifacts will be stored in the `dist/` directory.
+
+Use the `--prod` flag for a production build.
+
+```bash
+# Build the app for production
+$ npm build --prod
+```
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Production
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+A prod version of the app is deployed here :
+
+https://arnaudoisel.github.io/lca-test-front/
+
